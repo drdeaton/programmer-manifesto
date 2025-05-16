@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Classes - The Vex Programmer&#x27;s Manifesto</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">The Vex Programmer's Manifesto</li><li class="chapter-item expanded "><a href="../../../guide/code-quality/code-quality.html"><strong aria-hidden="true">1.</strong> Writing better code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization.html"><strong aria-hidden="true">1.1.</strong> Organization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization/headers.html"><strong aria-hidden="true">1.1.1.</strong> Header and Source Files</a></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization/namespaces.html"><strong aria-hidden="true">1.1.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization/classes.html" class="active"><strong aria-hidden="true">1.1.3.</strong> Classes</a></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization/file-structure.html"><strong aria-hidden="true">1.1.4.</strong> File and Folder Structure</a></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/organization/git-usage.html"><strong aria-hidden="true">1.1.5.</strong> Git</a></li></ol></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/styling.html"><strong aria-hidden="true">1.2.</strong> Styling</a></li><li class="chapter-item expanded "><a href="../../../guide/code-quality/abstraction.html"><strong aria-hidden="true">1.3.</strong> Abstraction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Testing</div></li></ol></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/algorithms.html"><strong aria-hidden="true">2.</strong> Basic Vex Control Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../guide/algorithms/open-loop.html"><strong aria-hidden="true">2.1.</strong> Time based/open-loop</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/naive-closed-loop.html"><strong aria-hidden="true">2.2.</strong> Naive closed-loop</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/pid.html"><strong aria-hidden="true">2.3.</strong> PID control</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/staged-progression.html"><strong aria-hidden="true">2.4.</strong> Staged Progression</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/linear-monion-profiling.html"><strong aria-hidden="true">2.5.</strong> Linear Motion Profiling</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/2d-motion-profiling.html"><strong aria-hidden="true">2.6.</strong> 2D Motion Profiling</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/corrected-motion-profiling.html"><strong aria-hidden="true">2.7.</strong> Motion Profiling with correction</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/pure-pursuit.html"><strong aria-hidden="true">2.8.</strong> Pure Pursuit</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/linear-motion-with-correction,md.html"><strong aria-hidden="true">2.9.</strong> Linear motion with correction</a></li><li class="chapter-item expanded "><a href="../../../guide/algorithms/boomerang.html"><strong aria-hidden="true">2.10.</strong> Boomerang</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../../contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Vex Programmer&#x27;s Manifesto</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/whooprobotics/programmer-manifesto/tree/master" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/whooprobotics/programmer-manifesto/tree/master/src/guide/code-quality/organization/classes.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<p>Classes are arguably the feature where C++ becomes C++. They are what makes C++ an object-oriented programming language. For you Java developers, this is probably the area you will be most comfortable with. Classes are very complex and so I can't cover everything about them, but I will try to get the basics of what they are and how to use them done here.</p>
+<p>A class (or, almost equivalently, a struct) is a custom variable type, which can include multiple member variables, member functions (which we call methods), and even other classes/structs inside.</p>
+<h2 id="declaration"><a class="header" href="#declaration">Declaration</a></h2>
+<p>Like with namespaces, classes, alongside all of their members, should be declared in a header, however since they are part of an object and not in the global namespace, you don't need to include <code>extern</code>, and you don't need to define class members in the accompanying source file. Let's take a look at an example:</p>
+<pre><code class="language-cpp">/* my-class.hh */
+class MyClass {
+ public:
+  static void foo();
+ private:
+  int bar {0}; // Initializing in the header file is okay here, since these are members of the class, and don't "really" exist
+};
+</code></pre>
+<p>Definitions should be kept to the source file</p>
+<pre><code class="language-cpp">/* my-class.cc */
+#include &lt;iostream&gt;
+#include "my-class.hh"
+
+void MyClass::foo() { // Use the scope operator to define the method
+  std::cout &lt;&lt; bar &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="static-members-and-permissions"><a class="header" href="#static-members-and-permissions">Static members and permissions</a></h2>
+<p>A static member of a class has 2 important properties:</p>
+<ul>
+<li>They are global, not real class members
+<ul>
+<li>Therefore, anything can access these functions and variables, <em>without needing an instance of the class</em></li>
+</ul>
+</li>
+<li>They cannot access non-static member variables of the class
+<ul>
+<li>This is because the static member, since it doesn't need an instance to be used, also can't know what instance it might get to use.</li>
+</ul>
+</li>
+</ul>
+<p>Static members of classes behave almost identically to the way they would if the class was a namespace instead, except they can also access private class members. Lets see an example:</p>
+<pre><code class="language-cpp">class MyClass {
+ public:
+  static void foo() {
+    std::cout &lt;&lt; bar &lt;&lt; std::endl;
+  }
+ private:
+  int bar = 0;
+}; // This semicolon is important!
+</code></pre>
+<p>This works, and can be called from anywhere in the program, however other parts of the program <em>cannot</em> directly read <code>bar</code>. Similarly, any static functions declared in the <code>private</code> area can't be accessed outside of the class (except by <code>friend</code> functions, but these are an advanced topic that I will not be covering).</p>
+<p>One other thing you should know is that when declaring a static variable in a class declaration (which should be in a header), you should not use the <code>extern</code> keyword.</p>
+<h2 id="class-instances"><a class="header" href="#class-instances">Class instances</a></h2>
+<p>An instance of a class is similar to an instance of any other variable. Similar to integers, if you have a class called <code>MyClass</code>, you can have multiple independent instances of the class, and these instances will not share member variables.</p>
+<h2 id="member-methods"><a class="header" href="#member-methods">Member methods</a></h2>
+<p>As discussed above, a class member method is basically just a function inside the class. Non-static member methods can access other non-static methods within the class, as well as instance variables, and, like other functions, they can access anything global, including everything in the class's static namespace.</p>
+<p>To access instance variables or methods in a non-static method, you can just reference them by name. To access them outside of the method, you have to use the <code>.</code> operator.</p>
+<pre><code class="language-cpp">class MyClass {
+ public:
+  void foo();
+
+  void bar() {
+    foo(); // This is allowed because bar is non-static
+  }
+};
+
+void MyClass::foo() { // Notice this is non-static
+  // Code here
+}
+
+void MyClass::bar() { // Notice this is non-static
+  foo(); // This can directly call foo
+}
+
+int main() {
+
+  MyClass::foo(); // This fails because `foo` is not static, and so it needs an instance to work with
+
+  MyClass instance; // Class name followed by variable name, just like declaring an int
+  instance.foo(); // Call foo
+  return 0;
+}
+</code></pre>
+<p>If you want to be more specific (which is highly recommended), you can use the special <code>this</code> pointer with the <code>-&gt;</code> operator to access instance variables and methods inside a method.</p>
+<pre><code class="language-cpp">void MyClass::bar() {
+  this-&gt;foo(); // This works too
+}
+</code></pre>
+<h2 id="inheritance"><a class="header" href="#inheritance">Inheritance</a></h2>
+<p>Inheritance is a property where a class can be a descendant of another class, and have all of the parent class's properties. Lets consider this example:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  int get_id_number() {
+    return id_number;
+  }
+ private:
+  int id_number {0}; // ID number defaults to 0
+};
+
+class Dog: Animal { // Dog "extends" animal
+  int bark() {
+    // Code that makes the dog bark
+  }
+};
+</code></pre>
+<p>In this case, we call <code>Dog</code> a "subclass" of <code>Animal</code>. This means <code>Dog</code> can do anything <code>Animal</code> can do, so we can do something like this:</p>
+<pre><code class="language-cpp">int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_id_number() &lt;&lt; std::endl; // Dog can do anything Animal can do, because it is an Animal
+  striker.bark(); // Dog still gets to do its dog things
+}
+</code></pre>
+<p>Importantly, <code>Dog</code> doesn't just get all of the properties of <code>Animal</code>, rather it <em>is</em> an <code>Animal</code>, and it can be cast to one.</p>
+<pre><code class="language-cpp">int main() {
+  Dog striker;
+  Animal stranger = striker;
+  std::cout &lt;&lt; stranger.get_id_number() &lt;&lt; std::endl; // stranger is just striker with less information
+  stranger.bark(); // Since stranger isnt of the Dog type, you can't do this
+  striker.bark(); // But this still works
+}
+</code></pre>
+<p>Another important thing with class inheritance is the <code>protected</code> visibility level. In the above example, <code>Dog</code> cannot directly access <code>id_number</code>, because it is <code>private</code>, however if it was <code>protected</code>, <code>Dog</code> would be able to access it. Essentially, <code>protected</code> is the same as <code>private</code> from the perspective of outside observers, but it is the same as <code>public</code> from the perspective of subclasses.</p>
+<h2 id="virtual-methods"><a class="header" href="#virtual-methods">Virtual Methods</a></h2>
+<p>A virtual method is a method which can be overriden by subclasses, and which will remain overridden even when cast to the parent class. Here is an example without using virtual:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  const char* const get_species() {
+    return "unknown unknown";
+  }
+};
+
+class Dog: Animal {
+ public:
+  const char* const get_species() {
+    return "canis familiaris";
+  }
+}
+
+int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_species() &lt;&lt; std::endl; // canis familiaris
+  std::cout &lt;&lt; (Animal)striker.get_species() &lt;&lt; std::endl; // unknown unknown
+}
+</code></pre>
+<p>In this case, after casting to <code>Animal</code>, the program resolves to use the <code>Animal</code> definition of <code>get_species</code>. This behavior can be changed with the <code>virtual</code> keyword:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  // Adding in virtual here
+  virtual const char* const get_species() {
+    return "unknown unknown";
+  }
+};
+
+class Dog: Animal {
+ public:
+  // "override" here allows the compiler to warn us if its not overriding properly
+  const char* const get_species() override {
+    return "canis familiaris";
+  }
+}
+
+int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_species() &lt;&lt; std::endl; // canis familiaris
+  std::cout &lt;&lt; (Animal)striker.get_species() &lt;&lt; std::endl; // canis familiaris
+}
+</code></pre>
+<p>This time, we get the output we wanted, even after casting to <code>Animal</code>.</p>
+<h2 id="pure-virtuals-abstract-classes-and-interfaces"><a class="header" href="#pure-virtuals-abstract-classes-and-interfaces">Pure virtuals, Abstract classes, and Interfaces</a></h2>
+<p>A pure virtual method is a method which <em>does not exist until it is overriden by a subclass.</em> These have their uses, and are created like this:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  // The = 0 makes this a pure virtual
+  virtual const char* const get_species() = 0;
+};
+
+class Dog: Animal {
+ public:
+  const char* const get_species() override {
+    return "canis familiaris";
+  }
+}
+</code></pre>
+<p>A class which contains pure virtual methods is called an "abstract class", and instances cannot be defined directly; so this is okay:</p>
+<pre><code class="language-cpp">// We're using pointers because just having Animal as a type isn't really possible
+Animal* striker = new Dog(); // This will know to use the `Dog` version of `get_species()`
+</code></pre>
+<p>but this is not:</p>
+<pre><code class="language-cpp">Animal* stranger = new Animal(); // This will have 1 or more method that it won't know where to look for!
+</code></pre>
+<p>Finally, an interface is an abstract class which has <em>no member variables</em> and all of its member methods must be pure virtual. Interfaces are useful if you follow the design principle of minimizing the responsibility of any given part of the program, and so they can be reused by many classes that might fulfill similar purposes, such as different implementations of odometry systems.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../guide/code-quality/organization/namespaces.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../guide/code-quality/organization/file-structure.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../guide/code-quality/organization/namespaces.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../guide/code-quality/organization/file-structure.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

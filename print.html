@@ -1,0 +1,1134 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Vex Programmer&#x27;s Manifesto</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">The Vex Programmer's Manifesto</li><li class="chapter-item expanded "><a href="guide/code-quality/code-quality.html"><strong aria-hidden="true">1.</strong> Writing better code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/code-quality/organization.html"><strong aria-hidden="true">1.1.</strong> Organization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/code-quality/organization/headers.html"><strong aria-hidden="true">1.1.1.</strong> Header and Source Files</a></li><li class="chapter-item expanded "><a href="guide/code-quality/organization/namespaces.html"><strong aria-hidden="true">1.1.2.</strong> Namespaces</a></li><li class="chapter-item expanded "><a href="guide/code-quality/organization/classes.html"><strong aria-hidden="true">1.1.3.</strong> Classes</a></li><li class="chapter-item expanded "><a href="guide/code-quality/organization/file-structure.html"><strong aria-hidden="true">1.1.4.</strong> File and Folder Structure</a></li><li class="chapter-item expanded "><a href="guide/code-quality/organization/git-usage.html"><strong aria-hidden="true">1.1.5.</strong> Git</a></li></ol></li><li class="chapter-item expanded "><a href="guide/code-quality/styling.html"><strong aria-hidden="true">1.2.</strong> Styling</a></li><li class="chapter-item expanded "><a href="guide/code-quality/abstraction.html"><strong aria-hidden="true">1.3.</strong> Abstraction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Testing</div></li></ol></li><li class="chapter-item expanded "><a href="guide/algorithms/algorithms.html"><strong aria-hidden="true">2.</strong> Basic Vex Control Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="guide/algorithms/open-loop.html"><strong aria-hidden="true">2.1.</strong> Time based/open-loop</a></li><li class="chapter-item expanded "><a href="guide/algorithms/naive-closed-loop.html"><strong aria-hidden="true">2.2.</strong> Naive closed-loop</a></li><li class="chapter-item expanded "><a href="guide/algorithms/pid.html"><strong aria-hidden="true">2.3.</strong> PID control</a></li><li class="chapter-item expanded "><a href="guide/algorithms/staged-progression.html"><strong aria-hidden="true">2.4.</strong> Staged Progression</a></li><li class="chapter-item expanded "><a href="guide/algorithms/linear-monion-profiling.html"><strong aria-hidden="true">2.5.</strong> Linear Motion Profiling</a></li><li class="chapter-item expanded "><a href="guide/algorithms/2d-motion-profiling.html"><strong aria-hidden="true">2.6.</strong> 2D Motion Profiling</a></li><li class="chapter-item expanded "><a href="guide/algorithms/corrected-motion-profiling.html"><strong aria-hidden="true">2.7.</strong> Motion Profiling with correction</a></li><li class="chapter-item expanded "><a href="guide/algorithms/pure-pursuit.html"><strong aria-hidden="true">2.8.</strong> Pure Pursuit</a></li><li class="chapter-item expanded "><a href="guide/algorithms/linear-motion-with-correction,md.html"><strong aria-hidden="true">2.9.</strong> Linear motion with correction</a></li><li class="chapter-item expanded "><a href="guide/algorithms/boomerang.html"><strong aria-hidden="true">2.10.</strong> Boomerang</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Vex Programmer&#x27;s Manifesto</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/whooprobotics/programmer-manifesto/tree/master" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Howdy! My name is Drew Deaton. I am the team ambassador for Aggie Robotics, and I have served as the software lead for our organization for the past 2 years, leading development of ReveilLib. In fact, I've been doing Vex since the Toss Up season, so I've been around for a while! More importantly than all of that, though, I am the loudest and the proudest member of the Fightin' Texas Aggie Class of 2025. Over these years, I've seen the Vex programming landscape shift massively, and I've seen what works, and I've seen what doesn't. In this book, I will attempt to pass on that knowledge.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="writing-better-code"><a class="header" href="#writing-better-code">Writing better code</a></h1>
+<p>Fundamentally, one of the most important things when you are learning to write more effective code is learning to write better code. What do I mean by "better"? When I say "better", I mean code that is:</p>
+<ul>
+<li><strong>Easily maintainable</strong> - Your code should be written in such a way that future development on your project doesn't require massive changes, and what bugs you leave in should be relatively easy to find and remove.</li>
+<li><strong>Easily usable</strong> - Your code needs to be designed in a way where any other programmer on your team can pick it up and use it. This means you need to write effective documentation, include <em>helpful</em> comments, and, most importantly, simply write code that describes itself.</li>
+<li><strong>Extensible</strong> - While not always a requirement, especially if your project has a very narrow scope and you can be completely sure it will never have to expand, software (especially in a library) needs to be written to be easily extended with minimal or preferably no modification to the base code.</li>
+</ul>
+<p>With that in mind, this section of the book will focus on improving the quality of your code.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="organization"><a class="header" href="#organization">Organization</a></h1>
+<p>Organization is critical to code structure. Different parts of your code need to go in different files so they can make sense. This is actually a big reason why Java is such a great language to learn; Java almost forces you to organize things into different directories. However, in Vex we mostly use C++, so lets look at a few of the tools C++ gives us to work with.</p>
+<p>In this section I will go over:</p>
+<ul>
+<li><a href="guide/code-quality/./organization/headers.html">Headers</a></li>
+<li><a href="guide/code-quality/./organization/namespaces.html">Namespaces</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="header-and-source-files"><a class="header" href="#header-and-source-files">Header and Source Files</a></h1>
+<p>C++ has 2 basic types of files:</p>
+<ul>
+<li>Source files
+<ul>
+<li>Typically end in <code>.cc</code>, <code>.cpp</code>, <code>.cxx</code>, or, rarely, <code>.C</code> (note the capitalization) or <code>.c++</code></li>
+<li>Contain code that performs actions, such as function definitions and global variable definitions</li>
+<li>Usually found in the <code>src</code> directory, or any of its subdirectories</li>
+</ul>
+</li>
+<li>Header files
+<ul>
+<li>Typically end in <code>.h</code>, <code>.hh</code>, <code>.hpp</code>, <code>.hxx</code>, <code>.H</code>, <code>.h++</code>, or occasionally, nothing at all</li>
+<li>Contain class and struct definitions, as well as <code>extern</code> variable declarations</li>
+<li>Usually found in the <code>include</code> directory, but occasionally found alongside its corresponding source file</li>
+</ul>
+</li>
+</ul>
+<p>To avoid ambiguity, I highly recommend avoiding using <code>.C</code>, <code>.H</code>, and <code>.h</code>, as well as nothing at all. You should also avoid <code>.C</code>, <code>.H</code>, <code>.h++</code>, and <code>.c++</code> due to incompatibilities between operating systems. For consistency, you should probably pick one of the following:</p>
+<ul>
+<li><code>.cc</code> and <code>.hh</code></li>
+<li><code>.cpp</code> and <code>.hpp</code></li>
+<li><code>.cxx</code> and <code>.hxx</code></li>
+</ul>
+<p>It is also common to see a mix-and-match approach, particularly with <code>.cc</code> and <code>.hpp</code>, but I prefer to avoid this, as it just looks nicer to keep the extensions similar, but really that is up to personal preference. For the purposes of this book, I will be using <code>.cc</code> and <code>.hh</code> throughout the rest, but do know that this all applies no matter which pair of extensions you choose.</p>
+<h2 id="proper-usage-of-headers-and-source"><a class="header" href="#proper-usage-of-headers-and-source">Proper usage of headers and source</a></h2>
+<p>Splitting code between headers and source files is one of the hardest things for a new C++ programmer to wrap their head around. Here are the general uses of the two types of files.</p>
+<h3 id="corresponding-headers-and-source-files"><a class="header" href="#corresponding-headers-and-source-files">Corresponding headers and source files</a></h3>
+<p>A common practice is to have 1 header per source file. Typically, there are 3 ways to approach this, which don't really have names, but for the sake of this document I am going to give them names.</p>
+<ul>
+<li>The Mirror Method
+<ul>
+<li>Every source file has a header with the same path, but in <code>include</code></li>
+<li><code>src/quux/mirror.cc</code> \( \rightarrow \) <code>include/quux/mirror.hh</code></li>
+</ul>
+</li>
+<li>The Library Method
+<ul>
+<li>Similar to the mirror method, except its all kept in a subdirectory</li>
+<li><code>src/quux/library.cc</code> \( \rightarrow \) <code>include/[Library Name]/quux/library.hh</code></li>
+<li>Typically a prelude header is placed in the <code>include/[Library Name]/</code> directory</li>
+<li>ReveilLib uses this, since it is a library</li>
+</ul>
+</li>
+<li>The Neighbor Method
+<ul>
+<li>Corresponding headers are kept right next to their source file</li>
+<li><code>src/quux/neighbor.cc</code> \( \rightarrow \) <code>src/quux/neighbor.hh</code></li>
+</ul>
+</li>
+</ul>
+<p>I will be using the Mirror method for my examples, but you can see how things apply.</p>
+<h3 id="including-headers"><a class="header" href="#including-headers">Including headers</a></h3>
+<p>Typically, you will see at the top of a source file (or even at the top of header files) something that looks like this:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include "rev.hh"
+</code></pre>
+<p>What <code>include</code> directives do is copy the contents of the specified header file to their location, but you don't need to know the exact mechanics to understand what it does. The real purpose of this is that it enables a file that includes a header to access anything that the specified header declares. There are 2 main types of <code>include</code> directives.</p>
+<p>A system header directive is usually used to include something from the standard library, which is a core part of the C++ language. These files are not found in your <code>include</code> directory, but rather wherever your chosen compiler on your chosen operating system stores them. For example, if you include <code>iostream</code>, you get to use <code>cout</code> to print to the terminal.</p>
+<pre><code class="language-cpp">/* src/main.cc */
+
+#include &lt;iostream&gt;
+
+int main() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+
+  return 0;
+}
+</code></pre>
+<p>prints</p>
+<pre><code>Hello World!
+</code></pre>
+<p>A file header, on the other hand, is usually used to include a header from your own project, or from a library you are using. For example,</p>
+<pre><code class="language-cpp">/* include/foo.hh */
+/* Note: this file contains a terrible practice that is defining a function in a header. More on this later. */
+
+#include &lt;iostream&gt;
+
+void print_hello_world() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+}
+</code></pre>
+<p>alongside</p>
+<pre><code class="language-cpp">/* src/main.cc */
+
+#include "foo.hh"
+
+int main() {
+  print_hello_world();
+}
+</code></pre>
+<p>will print</p>
+<pre><code>Hello World!
+</code></pre>
+<p>Typically, a source file will include</p>
+<ul>
+<li>System headers</li>
+<li>Its own corresponding header</li>
+<li>File headers that are needed</li>
+</ul>
+<h3 id="include-guards"><a class="header" href="#include-guards">Include guards</a></h3>
+<p>As mentioned before, when a header is included, it copies its full contents. This can include more include directives which include more headers and so on. There is, however, a problem with this. If you have multiple headers which depend on the same header, and all of them are included, and they all include the header they depend on, you might end up with multiple copies of the same header file being imported. This is almost always a bad thing, but fortunately we have a solution: include guards.</p>
+<p>There are 2 types of include guards. The first and most common type uses preprocessor directives to tell the compiler to omit the contents of the file if they've already been included:</p>
+<pre><code class="language-cpp">/* include/bar/baz.hh */
+#ifndef INCLUDE_BAR_BAZ
+#define INCLUDE_BAR_BAZ
+/* File contents here */
+#endif
+</code></pre>
+<p>This is common for a reason: it has worked for a long time and works with every ISO-compliant C++ compiler. However, it can be a little bit bulky, so theres an alternative.</p>
+<pre><code class="language-cpp">/* include/bar/baz.hh */
+#pragma once
+/* File contents here */
+</code></pre>
+<p>This solution can theoretically be faster on modern compilers, but officially it is not part of the ISO C++ spec. However, for the purposes of Vex, you will never encounter a compiler that doesn't support <code>#pragma once</code>, and even in the real world its pretty unlikely.</p>
+<h3 id="declarations"><a class="header" href="#declarations">Declarations</a></h3>
+<p>A declaration is where you essentially tell the compiler "hey, this exists." For a function, this might look like this:</p>
+<pre><code class="language-cpp">int foo(int bar); /* Notice the lack of a code block */
+</code></pre>
+<p>This is not a definition; the function does not have an attached code block. As such, if you try to call it, the compiler will give you an error. We will see how to attach a declaration to this soon.</p>
+<p>Global variables also have a way of being declared, without being defined.</p>
+<pre><code class="language-cpp">extern int baz;
+</code></pre>
+<p>The <code>extern</code> keyword here is... well, key. It tells the compiler "this exists already, its defined elsewhere, so you don't need to allocate memory for it." This is very important, because if you declare 2 global variables with the same name, the compiler won't know which is which, and even if that worked, you'd be in a tight spot, since your 2 files would be accessing different variables.</p>
+<p>Generally, declarations belong in header files, while definitions go in the corresponding source file. Lets take a look at definitions now.</p>
+<h3 id="definitions-and-initialization"><a class="header" href="#definitions-and-initialization">Definitions and Initialization</a></h3>
+<p>A definition is where you actually specify the thing you declared earlier. Initialization is where you set the initial value of a global variable.</p>
+<p>Here is an example of a function definition:</p>
+<pre><code class="language-cpp">/* src/foo.cc */
+
+int foo() {
+  return 0;
+}
+</code></pre>
+<p>As you can see, this function declaration has a code block associated with it, and so when <code>foo()</code> is called, the code block will run, and in this case, it will return <code>0</code>. Now for the cool part: you can combine the declaration and the definition together. Take, for example, the following program:</p>
+<pre><code class="language-cpp">/* src/foo.cc */
+
+int foo() {
+  return 3;
+}
+</code></pre>
+<pre><code class="language-cpp">/* src/main.cc */
+
+int main() {
+  std::cout &lt;&lt; foo() &lt;&lt; std::endl;
+}
+</code></pre>
+<p>This fails to compile, because the compiler, while reading <code>main.cc</code>, can't find the function <code>foo</code>. However if we modify <code>main.cc</code> as follows:</p>
+<pre><code class="language-cpp">/* src/main.cc */
+int foo();
+
+int main() {
+  std::cout &lt;&lt; foo() &lt;&lt; std::endl;
+}
+</code></pre>
+<p>We get a terminal output:</p>
+<pre><code>3
+</code></pre>
+<p>That means that the declaration in <code>main.cc</code> "linked" to the definition in <code>foo.cc</code>. If we reorganize this to use header files, we can get something like this:</p>
+<pre><code class="language-cpp">/* include/foo.hh */
+int foo();
+</code></pre>
+<pre><code class="language-cpp">/* src/foo.cc */
+#include "foo.hh" // Not strictly required, but this should be included for best practice
+
+int foo() {
+  return 3;
+}
+</code></pre>
+<pre><code class="language-cpp">/* src/main.cc */
+#include "foo.hh"
+
+int main() {
+  std::cout &lt;&lt; foo() &lt;&lt; std::endl;
+}
+</code></pre>
+<p>This compiles and gives us the same result!</p>
+<p>As for global variable definitions, they are similar, except a valid global variable definition looks like this:</p>
+<pre><code class="language-cpp">int bar;
+</code></pre>
+<p>Thats all. You don't have to set it equal to anything; the compiler will just allocate it a bit of space (in this case, 4 bytes), and it will work. It can be initialized later using something like this</p>
+<pre><code class="language-cpp">bar = 2158;
+</code></pre>
+<p>or you can define and initialize it all in one go:</p>
+<pre><code class="language-cpp">int bar = 2158;
+</code></pre>
+<p>Generally, this is how things should be done; everything that isn't a class with a built in default constructor (such as a smart pointer) should be initialized when it is defined to a safe value, or the value you want it to be initialized to. Failure to do so may cause unpredictable behavior.</p>
+<p>This all, of course, belongs in a source file. Lets take a look at how to use it:</p>
+<pre><code class="language-cpp">/* include/bar.hh */
+extern int bar;
+</code></pre>
+<pre><code class="language-cpp">/* src/foo.cc */
+#include "bar.hh" // Not strictly required, but this should be included for best practice
+
+int bar = 3;
+</code></pre>
+<pre><code class="language-cpp">/* src/main.cc */
+#include "foo.hh"
+
+int main() {
+  std::cout &lt;&lt; bar &lt;&lt; std::endl; // This prints our initial value of 3
+
+  bar = 7; // Reassignment is similar to initialization
+
+  std::cout &lt;&lt; bar &lt;&lt; std::endl; // This prints our new value of 7
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="namespaces"><a class="header" href="#namespaces">Namespaces</a></h1>
+<p>Namespaces are an extremely useful feature in C++. Like how folders allow you to sort files, namespaces allow you to sort functions, variables, and other declarations. The basic structure of a namespace is this:</p>
+<pre><code class="language-cpp">namespace foo {
+  int bar;
+  void baz();
+}
+</code></pre>
+<p>Definitions can also be put inside a namespace, however namespace declarations like above are best kept in header files.</p>
+<p>From outside of a namespace, there are 2 ways to access its internals. You can use the scope operator <code>::</code>, as follows:</p>
+<pre><code class="language-cpp">// Header includes omitted for brevity
+void main() {
+  std::cout &lt;&lt; foo::bar &lt;&lt; std::endl;
+}
+</code></pre>
+<p>As discussed in the <a href="guide/code-quality/organization/./headers.html">Headers</a> section, this specific case will print a garbage number, since <code>bar</code> has not been initialized, but the point is that <code>bar</code> can be accessed using the scope operator.</p>
+<p>The other way to access bar is with <code>using</code>.</p>
+<pre><code class="language-cpp">// Header includes omitted for brevity
+using foo::bar;
+void main() {
+  std::cout &lt;&lt; bar &lt;&lt; std::endl;
+}
+</code></pre>
+<p>This does the same thing, but with 1 caveat: it does not work if there is already a global variable with the name <code>bar</code>.</p>
+<p>You can also <code>using</code> an entire namespace at a time:</p>
+<pre><code class="language-cpp">using namespace foo;
+void main() {
+  std::cout &lt;&lt; bar &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Similar syntax can be used to call functions that are inside a namespace, or define them. Do note, though, that you need to have the member function declared inside the namespace before you can do this!</p>
+<pre><code class="language-cpp">void foo::baz() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+}
+
+void main() {
+  foo::baz();
+}
+</code></pre>
+<p>Namespaces can also be nested inside one another</p>
+<pre><code class="language-cpp">namespace foo {
+  namespace bar {
+    int baz = 69;
+  }
+
+  void quux() {
+    // Since foo::quux is a member of foo, it can directly access members of foo
+    std::cout &lt;&lt; bar::baz &lt;&lt; std::endl;
+  }
+}
+
+// This global function has the same name, but is not in the namespace, so the compiler pretends it has its own name
+
+void quux() {
+  // And because it isn't in the namespace, it has to use the scope operator
+  std::cout &lt;&lt; foo::bar::baz &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Generally, when you reference a variable or function name, C++ will check from the innermost scope outward, until it reaches the global scope. The insides of functions (and, in fact, any if statements, loops, or other code blocks inside the function) count too, so in the example of <code>foo::quux</code>, if you attemped to access a variable named <code>thud</code>, the compiler will search for:</p>
+<ol>
+<li>A variable named <code>thud</code> inside the <code>quux</code> function</li>
+<li>A variable named <code>thud</code> in the <code>foo</code> namespace</li>
+<li>A variable named <code>thud</code> in the global namespace</li>
+</ol>
+<p>However, lets say you have something like this:</p>
+<pre><code class="language-cpp">int thud = 2;
+namespace foo {
+  int thud = 1;
+  
+  void quux() {
+    int thud = 0;
+    std::cout &lt;&lt; thud &lt;&lt; std::endl; // This will print 0
+  }
+}
+</code></pre>
+<p>In this case, calling <code>quux</code> would cause the program to print <code>0</code>, since the first variable named <code>thud</code> that the compiler finds would be the local variable declared inside the function. If you want to access the global named <code>thud</code>, you can use the scope operator with nothing before it:</p>
+<pre><code class="language-cpp">int thud = 2;
+namespace foo {
+  int thud = 1;
+  
+  void quux() {
+    int thud = 0;
+    std::cout &lt;&lt; ::thud &lt;&lt; std::endl; // This will print 2
+  }
+}
+</code></pre>
+<p>More generally, a <code>::</code> with nothing before it tells the compiler that the variable or function we are looking for is relative to the global namespace. Therefore, to access <code>foo::thud</code>, we can do this:</p>
+<pre><code class="language-cpp">int thud = 2;
+namespace foo {
+  int thud = 1;
+  
+  void quux() {
+    int thud = 0;
+    std::cout &lt;&lt; ::foo::thud &lt;&lt; std::endl; // This will print 1
+  }
+}
+</code></pre>
+<p>Generally, namespaces are not something that is super important to use outside of developing libraries, unless a project gets very large and really needs the organization, however they are necessary to fully understand what is going on with most libraries.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<p>Classes are arguably the feature where C++ becomes C++. They are what makes C++ an object-oriented programming language. For you Java developers, this is probably the area you will be most comfortable with. Classes are very complex and so I can't cover everything about them, but I will try to get the basics of what they are and how to use them done here.</p>
+<p>A class (or, almost equivalently, a struct) is a custom variable type, which can include multiple member variables, member functions (which we call methods), and even other classes/structs inside.</p>
+<h2 id="declaration"><a class="header" href="#declaration">Declaration</a></h2>
+<p>Like with namespaces, classes, alongside all of their members, should be declared in a header, however since they are part of an object and not in the global namespace, you don't need to include <code>extern</code>, and you don't need to define class members in the accompanying source file. Let's take a look at an example:</p>
+<pre><code class="language-cpp">/* my-class.hh */
+class MyClass {
+ public:
+  static void foo();
+ private:
+  int bar {0}; // Initializing in the header file is okay here, since these are members of the class, and don't "really" exist
+};
+</code></pre>
+<p>Definitions should be kept to the source file</p>
+<pre><code class="language-cpp">/* my-class.cc */
+#include &lt;iostream&gt;
+#include "my-class.hh"
+
+void MyClass::foo() { // Use the scope operator to define the method
+  std::cout &lt;&lt; bar &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="static-members-and-permissions"><a class="header" href="#static-members-and-permissions">Static members and permissions</a></h2>
+<p>A static member of a class has 2 important properties:</p>
+<ul>
+<li>They are global, not real class members
+<ul>
+<li>Therefore, anything can access these functions and variables, <em>without needing an instance of the class</em></li>
+</ul>
+</li>
+<li>They cannot access non-static member variables of the class
+<ul>
+<li>This is because the static member, since it doesn't need an instance to be used, also can't know what instance it might get to use.</li>
+</ul>
+</li>
+</ul>
+<p>Static members of classes behave almost identically to the way they would if the class was a namespace instead, except they can also access private class members. Lets see an example:</p>
+<pre><code class="language-cpp">class MyClass {
+ public:
+  static void foo() {
+    std::cout &lt;&lt; bar &lt;&lt; std::endl;
+  }
+ private:
+  int bar = 0;
+}; // This semicolon is important!
+</code></pre>
+<p>This works, and can be called from anywhere in the program, however other parts of the program <em>cannot</em> directly read <code>bar</code>. Similarly, any static functions declared in the <code>private</code> area can't be accessed outside of the class (except by <code>friend</code> functions, but these are an advanced topic that I will not be covering).</p>
+<p>One other thing you should know is that when declaring a static variable in a class declaration (which should be in a header), you should not use the <code>extern</code> keyword.</p>
+<h2 id="class-instances"><a class="header" href="#class-instances">Class instances</a></h2>
+<p>An instance of a class is similar to an instance of any other variable. Similar to integers, if you have a class called <code>MyClass</code>, you can have multiple independent instances of the class, and these instances will not share member variables.</p>
+<h2 id="member-methods"><a class="header" href="#member-methods">Member methods</a></h2>
+<p>As discussed above, a class member method is basically just a function inside the class. Non-static member methods can access other non-static methods within the class, as well as instance variables, and, like other functions, they can access anything global, including everything in the class's static namespace.</p>
+<p>To access instance variables or methods in a non-static method, you can just reference them by name. To access them outside of the method, you have to use the <code>.</code> operator.</p>
+<pre><code class="language-cpp">class MyClass {
+ public:
+  void foo();
+
+  void bar() {
+    foo(); // This is allowed because bar is non-static
+  }
+};
+
+void MyClass::foo() { // Notice this is non-static
+  // Code here
+}
+
+void MyClass::bar() { // Notice this is non-static
+  foo(); // This can directly call foo
+}
+
+int main() {
+
+  MyClass::foo(); // This fails because `foo` is not static, and so it needs an instance to work with
+
+  MyClass instance; // Class name followed by variable name, just like declaring an int
+  instance.foo(); // Call foo
+  return 0;
+}
+</code></pre>
+<p>If you want to be more specific (which is highly recommended), you can use the special <code>this</code> pointer with the <code>-&gt;</code> operator to access instance variables and methods inside a method.</p>
+<pre><code class="language-cpp">void MyClass::bar() {
+  this-&gt;foo(); // This works too
+}
+</code></pre>
+<h2 id="inheritance"><a class="header" href="#inheritance">Inheritance</a></h2>
+<p>Inheritance is a property where a class can be a descendant of another class, and have all of the parent class's properties. Lets consider this example:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  int get_id_number() {
+    return id_number;
+  }
+ private:
+  int id_number {0}; // ID number defaults to 0
+};
+
+class Dog: Animal { // Dog "extends" animal
+  int bark() {
+    // Code that makes the dog bark
+  }
+};
+</code></pre>
+<p>In this case, we call <code>Dog</code> a "subclass" of <code>Animal</code>. This means <code>Dog</code> can do anything <code>Animal</code> can do, so we can do something like this:</p>
+<pre><code class="language-cpp">int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_id_number() &lt;&lt; std::endl; // Dog can do anything Animal can do, because it is an Animal
+  striker.bark(); // Dog still gets to do its dog things
+}
+</code></pre>
+<p>Importantly, <code>Dog</code> doesn't just get all of the properties of <code>Animal</code>, rather it <em>is</em> an <code>Animal</code>, and it can be cast to one.</p>
+<pre><code class="language-cpp">int main() {
+  Dog striker;
+  Animal stranger = striker;
+  std::cout &lt;&lt; stranger.get_id_number() &lt;&lt; std::endl; // stranger is just striker with less information
+  stranger.bark(); // Since stranger isnt of the Dog type, you can't do this
+  striker.bark(); // But this still works
+}
+</code></pre>
+<p>Another important thing with class inheritance is the <code>protected</code> visibility level. In the above example, <code>Dog</code> cannot directly access <code>id_number</code>, because it is <code>private</code>, however if it was <code>protected</code>, <code>Dog</code> would be able to access it. Essentially, <code>protected</code> is the same as <code>private</code> from the perspective of outside observers, but it is the same as <code>public</code> from the perspective of subclasses.</p>
+<h2 id="virtual-methods"><a class="header" href="#virtual-methods">Virtual Methods</a></h2>
+<p>A virtual method is a method which can be overriden by subclasses, and which will remain overridden even when cast to the parent class. Here is an example without using virtual:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  const char* const get_species() {
+    return "unknown unknown";
+  }
+};
+
+class Dog: Animal {
+ public:
+  const char* const get_species() {
+    return "canis familiaris";
+  }
+}
+
+int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_species() &lt;&lt; std::endl; // canis familiaris
+  std::cout &lt;&lt; (Animal)striker.get_species() &lt;&lt; std::endl; // unknown unknown
+}
+</code></pre>
+<p>In this case, after casting to <code>Animal</code>, the program resolves to use the <code>Animal</code> definition of <code>get_species</code>. This behavior can be changed with the <code>virtual</code> keyword:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  // Adding in virtual here
+  virtual const char* const get_species() {
+    return "unknown unknown";
+  }
+};
+
+class Dog: Animal {
+ public:
+  // "override" here allows the compiler to warn us if its not overriding properly
+  const char* const get_species() override {
+    return "canis familiaris";
+  }
+}
+
+int main() {
+  Dog striker;
+  std::cout &lt;&lt; striker.get_species() &lt;&lt; std::endl; // canis familiaris
+  std::cout &lt;&lt; (Animal)striker.get_species() &lt;&lt; std::endl; // canis familiaris
+}
+</code></pre>
+<p>This time, we get the output we wanted, even after casting to <code>Animal</code>.</p>
+<h2 id="pure-virtuals-abstract-classes-and-interfaces"><a class="header" href="#pure-virtuals-abstract-classes-and-interfaces">Pure virtuals, Abstract classes, and Interfaces</a></h2>
+<p>A pure virtual method is a method which <em>does not exist until it is overriden by a subclass.</em> These have their uses, and are created like this:</p>
+<pre><code class="language-cpp">class Animal {
+ public:
+  // The = 0 makes this a pure virtual
+  virtual const char* const get_species() = 0;
+};
+
+class Dog: Animal {
+ public:
+  const char* const get_species() override {
+    return "canis familiaris";
+  }
+}
+</code></pre>
+<p>A class which contains pure virtual methods is called an "abstract class", and instances cannot be defined directly; so this is okay:</p>
+<pre><code class="language-cpp">// We're using pointers because just having Animal as a type isn't really possible
+Animal* striker = new Dog(); // This will know to use the `Dog` version of `get_species()`
+</code></pre>
+<p>but this is not:</p>
+<pre><code class="language-cpp">Animal* stranger = new Animal(); // This will have 1 or more method that it won't know where to look for!
+</code></pre>
+<p>Finally, an interface is an abstract class which has <em>no member variables</em> and all of its member methods must be pure virtual. Interfaces are useful if you follow the design principle of minimizing the responsibility of any given part of the program, and so they can be reused by many classes that might fulfill similar purposes, such as different implementations of odometry systems.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="file-and-folder-structure"><a class="header" href="#file-and-folder-structure">File and Folder Structure</a></h1>
+<blockquote>
+<p>[!IMPORTANT]
+This section has yet to be written</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
+<p>One of the most important tools any developer has is version control. The most popular version control software is Git, and that is what most people in Vex, including Aggie Robotics, use.</p>
+<h2 id="repositories"><a class="header" href="#repositories">Repositories</a></h2>
+<p>A project in Git is called a repository. It is typically the entire contents of a folder containing your program's source code, with a few files excluded. In addition, a repository has a lot of metadata associated with it, particularly the history of changes to the repository, as well as branches and tags. Every repository starts out empty, and all content is saved through these commits.</p>
+<h2 id="commits"><a class="header" href="#commits">Commits</a></h2>
+<p>A "commit" is a set of changes applied to a repository, referenced by a hash. Every commit (except the initial commit) has a reference to its parent commit; that is the version of the code immediately before it. For example, if you have the following code:</p>
+<pre><code class="language-cpp">void main() {
+  // TODO: Do nothing
+}
+</code></pre>
+<p>and you change it to this and commit:</p>
+<pre><code class="language-cpp">void main() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+}
+</code></pre>
+<p>Then the commit is just a pointer to the previous version of the code, as well as metadata saying what was added and removed</p>
+<pre><code>line 2:
+-   // TODO: Do nothing
++   std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+</code></pre>
+<blockquote>
+<p>[!NOTE]
+Multiple commits can have the same parent. We call these commits members of different branches.</p>
+</blockquote>
+<p>Another important concept with commits is immutability. By design, once a commit is made, it cannot be edited, and is always part of the repository. However, this usually isn't a problem</p>
+<h2 id="branches-and-tags"><a class="header" href="#branches-and-tags">Branches and Tags</a></h2>
+<p>Git has a few different types of named commits, which make it easier to reference a version of the code without remembering a hash.</p>
+<p>The first and most important named commit is <code>HEAD</code>. This references the currently active version of the code, be it the latest version on a branch, some old version, or any other version of the code throughout the repository.</p>
+<p>Another type of named commit is a branch. A branch name usually tracks the latest commit along the local copy of a specific branch within a repository.</p>
+<p>Tags are also a type of named commit. Unlike branches, a tag will always reference the commit where it was created. Tags also form the basis for Github's Releases feature.</p>
+<h2 id="merging-changes"><a class="header" href="#merging-changes">Merging Changes</a></h2>
+<p>When 2 branches diverge, it can be a pain to bring together the changes. Fortunately, Git has a tool specifically designed for that: the merge commit. A merge commit is a special type of commit that has 2 parents, so it can apply all of the changes of both branches together. During a merge, there are 2 parent branches to consider: the "base" branch, which is where the new commit is created, and the "incoming" branch. Git will automatically apply all of the changes from the incoming branch to the base branch when it can.</p>
+<p>Git can't always do everything on its own, though. Sometimes, the changes on 2 branches will conflict with one another. When this happens, it will require the programmer to manually edit the code before the merge commit can be completed.</p>
+<blockquote>
+<p>[!WARNING]
+Git is not perfect, and even if it "succeeds" at merging, it is possible for it to splice together code that doesn't work. You, the programmer, are responsible for looking through these changes and ensuring that it all works as expected. Automated testing can help with this.</p>
+</blockquote>
+<h2 id="git-flow"><a class="header" href="#git-flow">Git-flow</a></h2>
+<p>For development of ReveilLib, we like to use a specific branching model aimed at ensuring we always have stable code. This model is known as Git-flow. In essence there are 2 main branches:</p>
+<ul>
+<li>The <code>master</code> branch holds the latest stable release (not release candidate) code. Code that isn't competition-ready should never be included on this branch.</li>
+<li>The <code>develop</code> branch holds feature-complete code awaiting release. This code might contain bugs.</li>
+<li>The <code>gh-pages</code> branch contains autogenerated documentation, and its existence should be ignored for the most part. You will never commit or merge directly to this branch, and in fact it actually has no parent in common with any other branch on the repository.</li>
+</ul>
+<p>These main branches should <em>never</em> get code directly committed to them.</p>
+<p>As a general rule, <code>master</code> is always behind <code>develop</code>.</p>
+<p>There are also 3 other types of branches</p>
+<ul>
+<li>Branches of the form <code>hotfix-&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code> are for bug fixes on release code
+<ul>
+<li>These branches branch off of <code>master</code>, recieve direct commits to fix bugs, and then merge into <code>master</code> then <code>master</code> merges into <code>develop</code>.</li>
+<li>When these branches are merged into master, they also come with a new patch version number.</li>
+</ul>
+</li>
+<li>Branches of the form <code>release-&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</code> are for major and minor releases
+<ul>
+<li>These branches branch off of <code>develop</code> and recieve direct commits to prepare them for release.</li>
+<li>Once a <code>release-</code> branch is complete, it is merged into <code>master</code> and then <code>master</code> into <code>develop</code>, and a new release is created on <code>master</code>.</li>
+<li>On a release branch, <code>&lt;patch&gt;</code> should always be <code>0</code></li>
+<li>While preparing for release, pre-releases (also known as release candidates) may be built and released based on this branch.</li>
+</ul>
+</li>
+<li>All other branches are called feature branches
+<ul>
+<li>Feature branches branch off of <code>develop</code></li>
+<li>A feature branch has usually 1 specific feature it aims to develop, or otherwise 1 change to functionality, or even just a refactor without a change to functionality</li>
+<li>Feature branches are merged directly back into <code>develop</code> once they are ready.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>References:</p>
+<ul>
+<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model - nvie.com</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="styling"><a class="header" href="#styling">Styling</a></h1>
+<p>Another very important concept in programming is styling. Take a look at the following code.</p>
+<pre><code class="language-cpp">void moveTo_target(double X, double Y) {
+  auto Angle= atan2(X,Y);
+  double d = sqrt( pow(X,2)+pow(Y, 
+    2));
+  goTo(
+    d,Angle)
+}
+</code></pre>
+<p>Notice how difficult that code is to read. Now lets examine a cleaner version of the code that accomplishes essentially the same purpose (though with some naming differences)</p>
+<pre><code class="language-cpp">void move_to_target(double x, double y) {
+  double angle = atan2(x, y);
+  double distance = sqrt(x*x + y*y);
+  go_to(distance, angle)
+}
+</code></pre>
+<p>This code is easier to read for a few reasons. The whitespace is consistent, the way variables and functions are named is consistent, and things are named appropriately. By far the most important concepts in styling code can be summed up by 2 points</p>
+<ol>
+<li>Name things well</li>
+<li>Use consistent capitalization and whitespace throughout a project</li>
+</ol>
+<p>Outside of these things, there really isn't one style guide that is the best. For the purposes of working with Aggie Robotics code, it is best to follow the established style guide, which is the same as the Chromium style guide, with a few exceptions in capitalization:</p>
+<div class="table-wrapper"><table><thead><tr><th>Item</th><th>Convention</th></tr></thead><tbody>
+<tr><td>Struct/Class names</td><td><code>UpperCamelCase</code></td></tr>
+<tr><td>Functions &amp; Methods</td><td><code>snake_case</code></td></tr>
+<tr><td>Local &amp; Member Variables</td><td><code>snake_case</code></td></tr>
+<tr><td>Constants</td><td><code>SCREAMING_SNAKE_CASE</code></td></tr>
+</tbody></table>
+</div>
+<p>If anything is unclear, it is best to refer to existing code within the project to find something similar.</p>
+<blockquote>
+<p>[!TIP]
+Use <code>clang-format</code> and <code>clang-tidy</code> to enforce styling</p>
+</blockquote>
+<h2 id="naming-things"><a class="header" href="#naming-things">Naming Things</a></h2>
+<p>There is an infamous joke in computer science:</p>
+<blockquote>
+<p>There are only two hard things in Computer Science: cache invalidation and naming things.</p>
+<p>-- Phil Karlton</p>
+</blockquote>
+<p>Fortunately for us, right now you only need to learn how to name things.</p>
+<p>One of the biggest sins when naming things is the dreaded single-letter variable name. Its something we all do when we are learning to program; we name variables using a single letter, then have no idea what the code does when we come back to it. Take a look at the following code:</p>
+<pre><code class="language-cpp">void TRIO::set(Position p) {
+  m.take(TIMEOUT_MAX);
+
+  this-&gt;p.p = p;
+  this-&gt;p.v = {0 * i / s, 0 * i / s,
+                          0 * i / s};
+
+  this-&gt;h_i = sensor.get() - this-&gt;p.theta.convert(d);
+
+  m.give();
+}
+</code></pre>
+<p>What does it do? Good question; its hard to take a glance at that code and understand exactly what it does. Heres the same code with meaningful names:</p>
+<pre><code class="language-cpp">void TwoRotationInertialOdometry::set_position(Position pos) {
+  current_position_mutex.take(TIMEOUT_MAX);
+
+  current_position.pos = pos;
+  current_position.vel = {0 * inch / second, 0 * inch / second,
+                          0 * radian / second};
+
+  this-&gt;heading_ticks_init = inertial.get_heading() - current_position.pos.theta.convert(degree);
+
+  current_position_mutex.give();
+}
+</code></pre>
+<p>Now you can see pretty clearly what this code does. It sets the current position, and sets the zero point of the heading for the gyro. This isn't just an example; this code is actually used in ReveilLib's TwoRotationGyroOdometry.</p>
+<p>There are however a few exceptions where it is okay to use single letter variable names. An example is in some <code>for</code> loops, like this one</p>
+<pre><code class="language-cpp">for(int i = 0; i &lt; 10; i++) {
+  std::cout &lt;&lt; "foo" &lt;&lt; std::endl;
+}
+</code></pre>
+<p>This <code>for</code> loop is pretty simple; it just prints <code>foo</code> 10 times. Notably, <code>i</code> is meaningless, and it doesn't take on a meaning. Lets examine the following code:</p>
+<pre><code class="language-cpp">StationStatus check_all_stations() {
+  for(int i = 0; i &lt; 8; i++)
+    if(get_station_status(i) == StationStatus::DOWN)
+      return StationStatus::DOWN;
+
+  return StationStatus::OK;
+}
+</code></pre>
+<p>While this code isn't awful, at a glance <code>i</code> still does not have a super well-defined meaning. This can be fixed by naming it appropriately for what its used for:</p>
+<pre><code class="language-cpp">StationStatus check_all_stations() {
+  for(int station_id = 0; station_id &lt; 8; station_id++)
+    if(get_station_status(station_id) == StationStatus::DOWN)
+      return StationStatus::DOWN;
+
+  return StationStatus::OK;
+}
+</code></pre>
+<blockquote>
+<p>[!Note]
+If you only have a single statement, you don't have to surround code in a for loop or if statement with <code>{}</code>, which is why the above code works. However, this should be used sparingly,
+since omitting these can make code harder to read sometimes.</p>
+</blockquote>
+<p>This code makes it much clearer what is happening with the iterator variable. Generally, a good rule of thumb is to try to give every variable a clear meaning in its name, such that if someone whos never seen this code before looks at it, they can immediately understand what its for. It is okay to use meaningless variable names, but only when the variable itsself has no meaning.</p>
+<h2 id="whitespace"><a class="header" href="#whitespace">Whitespace</a></h2>
+<p>Whitespace is also an important thing to remember in your code. While cool one-liners and compact code look cool sometimes, nobody wants to maintain that code, so having whitespace is important. Here are a few key rules to keep in mind:</p>
+<p><em>Code nested inside a codeblock should be indented.</em> This means</p>
+<ul>
+<li>Anything inside a function</li>
+<li>Anything inside a for or while loop</li>
+<li>Anything in an if/else statement</li>
+</ul>
+<p>Python is a great way to learn about indentation, since it requires correct indentation to run.</p>
+<p>Another important concept is just spaces between things. Code needs to have spaces to be readable. For example</p>
+<pre><code class="language-cpp">distance = speed * time;
+</code></pre>
+<p>is just way more readable than</p>
+<pre><code class="language-cpp">distance=speed*time;
+</code></pre>
+<p>for the same reason that we put spaces between words in English. Youwouldn'twanttoreadawholebookwiththisspacing,wouldyou?</p>
+<p>Finally, use of the newline needs to be considered. Generally, outside of the start of a for loop (you know, <code>for(int i = 0; i &lt; 10; i++)</code>), almost every semicolon should be followed by a newline. Anything inside of a real codeblock also needs to be on a newline, and really for the most part, you've probably already been doing all of this, since even bad code tends to use newlines appropriately. When you're in doubt, just use <code>clang-format</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="abstraction"><a class="header" href="#abstraction">Abstraction</a></h1>
+<p>Abstraction is one of the most important concepts in programming. It allows you to think more about the purpose of your code, and less about how it works. Good code makes ample use of abstraction, as it allows the code's purpose to be understood from reading it, and it helps you to minimize bugs.</p>
+<p>There are 2 main types of abstraction: Data abstraction and Control abstraction. We will take a look at how to use each.</p>
+<h2 id="data-abstraction"><a class="header" href="#data-abstraction">Data Abstraction</a></h2>
+<p>Data abstraction is a form of abstraction that involves using data structures to reduce the complexity of a piece of code. Combining related data together in data structures allows you to manage it more easily, reduce line count, and reduce confusion. To understand this better, lets examine this snippet of code that calculates a dot product:</p>
+<pre><code class="language-cpp">double x1 = 1;
+double y1 = 2;
+double x2 = 2;
+double y2 = 1;
+
+double v1dotv2 = x1 * x2 + y1 * y2;
+</code></pre>
+<p>This code stores the 2 vectors in 2 variables each. In this case, the relation between the 2 components of each vector is obvious, however it still leaves something to be desired in cleanliness. Lets now see a version which uses a structure to help.</p>
+<pre><code class="language-cpp">struct vec {
+  double x;
+  double y;
+};
+
+vec v1 = {1, 2};
+vec v2 = {2, 1};
+
+double xdoty = v1.x * v2.x + v1.y * v2.y;
+</code></pre>
+<p>In this example, data is clearly associated with its data structure, and initializing the structure is more straightforward. Another good use of data abstraction is with units. Lets take a look at this code:</p>
+<pre><code class="language-cpp">double length = 1.5;
+std::cout &lt;&lt; length * 2.54 &lt;&lt; "cm" &lt;&lt; std::endl;
+</code></pre>
+<p>You might notice a problem: what is this length? 1.5 inches? Feet? Meters? Furlongs? Nobody knows, at least not without digging through more code to try to find the unit type. Even if you do know the unit type, multiplying this number by constants in your code can make things messy, and leave a lot of room for mistakes. Lets take a look at how ReveilLib (and OkapiLib) solve this problem, with a custom data type.</p>
+<pre><code class="language-cpp">using namespace rev;
+
+QLength length = 1.5_in; // Now we can clearly see in the initializer that this is in inches
+
+std::cout &lt;&lt; length.convert(centimeter) &lt;&lt; "cm" &lt;&lt; std::endl;
+</code></pre>
+<p>As you can see, this fairly simple data type encodes the units that are used (internally using meters), and can automatically perform dimensional analysis using names instead of hard-to-remember and harder-to-read constants. Another feature of this usage of abstraction is this case, where an operator is incorrect:</p>
+<pre><code class="language-cpp">double len1 = 1.5;
+double len2 = 2;
+
+double len3 = 1.5 * 2; // This * should be a +
+
+std::cout &lt;&lt; len3 &lt;&lt; std::endl;
+</code></pre>
+<p>This will end up printing <code>3</code>, when you would otherwise expect a <code>1.5</code>, and unless you have a keen eye, you might spend hours trying to figure out why. Lets see what happens when you try this with <code>QLength</code>:</p>
+<pre><code class="language-cpp">QLength len1 = 1.5;
+QLength len2 = 2;
+
+QLength len3 = 1.5 * 2;
+
+std::cout &lt;&lt; len3.convert(inch) &lt;&lt; std::endl;
+</code></pre>
+<p>In this case, the compiler will give you an error, since multiplying 2 <code>QLength</code>s gives you a <code>QArea</code>, which is not the same type. This will immediately lead you to the erroneous <code>*</code>, saving you time and a real headache.</p>
+<p>As you can see, structs and classes are a lot more than just a grouping of code; they can help you simplify your code and make it easier to understand. Let's now take a look at some control abstraction.</p>
+<h2 id="control-abstraction"><a class="header" href="#control-abstraction">Control abstraction</a></h2>
+<p>Take a look at the following code, and without scrolling down, figure out what it does.</p>
+<pre><code class="language-cpp">float number = 2;
+const float threehalfs = 1.5F;
+
+float x2 = number * 0.5F;
+float y = number;
+long i = *(long *)&amp;y;
+i = 0x5f3759df - (i &gt;&gt; 1);
+y = *(float *) &amp;i;
+y = y * (threehalfs - (x2 * y * y));
+</code></pre>
+<p>No idea? Thats okay; this code has no comments nor any good explaination of what it does, and figuring out how exactly it works takes a lot of time and possibly a degree in computer science. Fortunately, it becomes a lot clearer when you wrap it in a function:</p>
+<pre><code class="language-cpp">float inverse_sqrt(float number) {
+  const float threehalfs = 1.5F;
+
+  float x2 = number * 0.5F;
+  float y = number;
+  long i = *(long *)&amp;y;
+  i = 0x5f3759df - (i &gt;&gt; 1);
+  y = *(float *) &amp;i;
+  y = y * (threehalfs - (x2 * y * y));
+
+  return y;
+}
+
+float number = 2;
+float y = inverse_sqrt(number);
+</code></pre>
+<p>Now it seems fairly obvious: this is just an implementation of the inverse square root function:</p>
+<p>\[ y=\frac{1}{\sqrt{\text{number}}} \]</p>
+<p>This is why breaking code down into smaller manageable chunks is useful; if the inverse square root code appeared inline in a function, you would probably have no idea what it is doing and get completely lost on how the function works. If, however, it was stored in its own function like above, you'd see the name of the function call and immediately be able to understand what it does, even if you don't know exactly how it does it. This code was actually used in <em>Quake</em>, in its own function thankfully, and is known as the fast inverse square root algorithm.</p>
+<p>Another way you might want to use abstraction is for something like a dot product. Lets review the example from above:</p>
+<pre><code class="language-cpp">struct vec {
+  double x;
+  double y;
+};
+
+vec v1 = {1, 2};
+vec v2 = {2, 1};
+
+double xdoty = v1.x * v2.x + v1.y * v2.y;
+</code></pre>
+<p>Simple enough if you are just taking 1 dot product, however anything involving a lot of geometry (particularly odometry algorithms and drive algorithms) might take dozens of dot products every iteration, and one incorrect symbol can screw all of that up. Lets apply what we've learned to make this code better. First, we can convert it to use QLength and QArea:</p>
+<pre><code class="language-cpp">using namespace rev;
+struct vec {
+  QLength x;
+  QLength y;
+};
+
+vec v1 = {1_in, 2_in};
+vec v2 = {2_in, 1_in};
+
+QArea xdoty = v1.x * v2.x + v1.y * v2.y;
+</code></pre>
+<p>Then we can move the dot product into its own function. Since we are dealing with a custom struct, we can make this a member function.</p>
+<pre><code class="language-cpp">using namespace rev;
+struct vec {
+  QLength x;
+  QLength y;
+
+  QArea dot(vec&amp; rhs) {
+    return this-&gt;x * rhs.x + this-&gt;y * rhs.y;
+  }
+};
+
+vec v1 = {1_in, 2_in};
+vec v2 = {2_in, 1_in};
+
+QArea xdoty = v1.dot(v2);
+</code></pre>
+<p>As you can see, at a glance it is easier to tell what the purpose of this code is! Lets also add an absolute value function:</p>
+<pre><code class="language-cpp">using namespace rev;
+struct vec {
+  QLength x;
+  QLength y;
+
+  QArea dot(vec&amp; rhs) {
+    return this-&gt;x * rhs.x + this-&gt;y * rhs.y;
+  }
+
+  QLength abs() {
+    return sqrt(this-&gt;dot(*this));
+  }
+};
+
+vec v1 = {1_in, 2_in};
+vec v2 = {2_in, 1_in};
+
+QArea xdoty = v1.dot(v2);
+
+QLength absv1 = v1.abs();
+</code></pre>
+<p>You can see how it is easy to understand what each method does, but understanding it all at the same time might be a bit more difficult, and abstracting code lets you abstract other code much more freely, making the entire program easier to understand.</p>
+<hr />
+<p>References:</p>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/abstraction-in-cpp/">Abstraction in C++ - GeeksforGeeks</a></li>
+<li><a href="https://www.geeksforgeeks.org/fast-inverse-square-root/">Fast inverse square root - GeeksforGeeks</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="basic-vex-control-algorithms"><a class="header" href="#basic-vex-control-algorithms">Basic Vex Control Algorithms</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="time-basedopen-loop"><a class="header" href="#time-basedopen-loop">Time based/open-loop</a></h1>
+<p>Open-loop control is a control method which uses <em>no feedback</em> to change the output parameters based on external conditions. In other words, the system will just output values, typically motor voltages or velocities, without any consideration to what else is happening around the robot.</p>
+<h1 id="time-based-control"><a class="header" href="#time-based-control">Time-based control</a></h1>
+<p>The most common form of open-loop control in Vex is time-based control. Time-based control isn't great, but, used correctly, can still be decently powerful.
+Typically, time based control consists of setting motor values, waiting a specified duration, then turning the motors off, like such:</p>
+<pre><code class="language-cpp">motor.move_velocity(200);
+pros::delay(1000);
+motor.brake();
+</code></pre>
+<p>The above code should move the motor approximately <code>3.33</code> revolutions, at least in theory. However, this can be imprecise for a number of reasons. The most obvious is that it ignores acceleration and deceleration; the motor is just trying to target a speed, and then it is trying to target a different speed 1 second later. If it can reach both instantaneously, and it is able to maintain them, then great, we have a working algorithm. However, unfortunately, the laws of physics prohibit this.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="naive-closed-loop"><a class="header" href="#naive-closed-loop">Naive closed-loop</a></h1>
+<p>Perhaps a better solution is to use conditional statements to target a certain point then. We can achieve this by using sensors, such as the one built into the motor!</p>
+<pre><code class="language-cpp">const double TARGET = 3.333;
+motor.move_velocity(200);
+while(motor.get_position() &lt; TARGET) pros::delay(10); // Assume get_position is in revolutions
+motor.brake();
+</code></pre>
+<p>This might be a little bit better, especially in cases where the motor takes a while to get up to speed, but theres a notable flaw in this: it will <em>always</em> overshoot.
+This is just the natural consequence of waiting until the position gets past the target to stop, since braking still takes some distance.</p>
+<p>Ok, well, if its overshooting, then we just need to turn the motor back the other way when that happens! Lets try this:</p>
+<blockquote>
+<p>![NOTE]
+For the sake of keeping this concise, this code is going to have a completely different use case from the code block further up this page. Particularly, we're going
+to use an infinite loop here, since an exit condition is not relevant to the topic at hand.</p>
+</blockquote>
+<pre><code class="language-cpp">const double TARGET = 3.333;
+while(true) {
+    pros::delay(10);
+    double pos = motor.get_position();
+    if(pos &lt; TARGET) motor.move_velocity(200);
+    else if (pos &gt; TARGET) motor.move_velocity(-200);
+    else motor.brake();
+}
+</code></pre>
+<p>Ok great, now we have closed loop code that will target a position and work towards it! However, its not the best algorithm ever. It will attempt to go full power towards the target point, even if its really close, which will then cause it to overshoot and repeat from the other side, potentially forever, creating a very shaky robot. This is not ideal. Fortunately, there are better algorithms out there.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pid-control"><a class="header" href="#pid-control">PID control</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="staged-progression"><a class="header" href="#staged-progression">Staged Progression</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linear-motion-profiling"><a class="header" href="#linear-motion-profiling">Linear Motion Profiling</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="2d-motion-profiling"><a class="header" href="#2d-motion-profiling">2D Motion Profiling</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="motion-profiling-with-correction"><a class="header" href="#motion-profiling-with-correction">Motion Profiling with correction</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pure-pursuit"><a class="header" href="#pure-pursuit">Pure Pursuit</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linear-motion-with-correction"><a class="header" href="#linear-motion-with-correction">Linear motion with correction</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boomerang"><a class="header" href="#boomerang">Boomerang</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contributors"><a class="header" href="#contributors">Contributors</a></h1>
+<p>Special thanks to the following contributors, whos ideas and contributions have helped improve this guide.</p>
+<ul>
+<li>Connor White (<a href="https://github.com/connoratmos">ConnorAtmos</a>)</li>
+<li>Sean Mahon (<a href="https://github.com/parzivalt37">parzivalt37</a>)</li>
+<li><a href="https://geeksforgeeks.org">GeeksforGeeks</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
